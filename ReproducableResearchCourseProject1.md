@@ -50,8 +50,8 @@ What is mean total number of steps taken per day?
     qplot(total.steps$stepsperday, binwidth=1000, xlab="total number of steps taken each day")
 
 ![](ReproducableResearchCourseProject1_files/figure-markdown_strict/unnamed-chunk-6-1.png)
-\#\#\#\#\# 2. Calculate and report the mean and median total number of
-steps taken per day
+
+##### 2. Calculate and report the mean and median total number of steps taken per day
 
     mean(total.steps$stepsperday, na.rm=TRUE)
 

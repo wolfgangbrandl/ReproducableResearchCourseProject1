@@ -2,17 +2,20 @@
 title: "ReproducableResearchCourseProject1"
 author: "Wolfgang Brandl"
 date: "18 Juni 2016"
-output: html_document
+output: md_document
 ---
-```{r, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
 library(ggplot2)
 library(data.table)
 library(scales)
 library(Hmisc)
 ```
 ## Set Work Area 
-```{r, results='markup', warning=TRUE, message=TRUE}
+```{r}
 wd <- file.path ("D:","Users","wbrandl","Coursera","ReproducableResearchCourseProject1")
 setwd (wd)
 if (!file.exists("data")){
@@ -29,7 +32,7 @@ setwd (wd)
 download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", "repdataFdataFactivity.zip", method="wininet", quiet = FALSE, mode = "wb",cacheOK = TRUE)
 ```
 ##### 1. Load the data (i.e. read.csv())
-```{r, results='markup', warning=TRUE, message=TRUE}
+```{r, warning=TRUE, message=TRUE}
 data <- read.csv(unz("repdataFdataFactivity.zip", "activity.csv"), header=T, quote="\"", sep=",")
 ```
 ## What is mean total number of steps taken per day?
@@ -42,7 +45,9 @@ total.steps <- datatable[steps>0,.(stepsperday = sum(steps)),by=.(date)]
 ```{r}
 qplot(total.steps$stepsperday, binwidth=1000, xlab="total number of steps taken each day")
 ```
+
 ##### 2. Calculate and report the mean and median total number of steps taken per day
+
 ```{r}
 mean(total.steps$stepsperday, na.rm=TRUE)
 median(total.steps$stepsperday, na.rm=TRUE)
